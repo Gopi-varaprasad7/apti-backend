@@ -1,11 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const env = require('dotenv');
 const userRouter = require('./routes/userRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/aptiver');
+env.config();
+
+mongoose.connect(process.env.DB_URL);
 
 app.use(cors());
 app.use(express.json());
