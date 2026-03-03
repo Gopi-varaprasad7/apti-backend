@@ -9,20 +9,15 @@ dotenv.config();
 const adminLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
-
-    // Check if email & password exist
     if (!email || !password) {
       return res
         .status(400)
         .json({ message: 'Please provide both email and password' });
     }
-
-    // Compare with env values
     if (
       email === process.env.ADMIN_EMAIL &&
       password === process.env.ADMIN_PASSWORD
     ) {
-      // Generate JWT token
       const token = jwt.sign({ email, role: 'admin' }, process.env.JWT_SECRET, {
         expiresIn: '1d',
       });
