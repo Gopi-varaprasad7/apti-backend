@@ -11,7 +11,7 @@ const router = express.Router();
 router.post('/register', createUser);
 router.post('/login', loginUser);
 router.post('/user/solved', updateSolvedQuestion);
-router.post('/user/explain', explain);
+router.post('/explain', explain);
 router.get('/user', getUser);
 
 module.exports = router;
